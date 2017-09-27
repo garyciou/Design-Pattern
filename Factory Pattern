@@ -1,0 +1,38 @@
+public interface Product {  } // 每間工廠都會做到的重複的事情
+
+public abstract class Creator  //factory class 
+{
+    public void Operation() 
+    {
+        Product product = factoryMethod();
+    }
+    
+    protected abstract Product factoryMethod();
+}
+
+public class ConcreteProduct implements Product {  }
+
+public class ConcreteCreator extends Creator  
+{
+    protected Product factoryMethod() 
+    {
+        return new ConcreteProduct();
+    }
+}
+
+public class ConcreteCreator2 extends Creator  
+{
+    protected Product factoryMethod() 
+    {
+        return new ConcreteProduct();
+    }
+}
+
+
+public static void main( String arg[] ) 
+{
+        Creator creator = new ConcreteCreator();
+        creator.Operation();
+        Creator creator2 = new ConcreteCreator2();
+        creator.Operation();
+}
